@@ -10,24 +10,20 @@ class Cors implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        // For preflight (OPTIONS) requests
-        if ($request->getMethod(true) === 'OPTIONS') {
-            $response = service('response');
-            $response->setHeader('Access-Control-Allow-Origin', '*');
-            $response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-            $response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-            return $response->setStatusCode(200);
-        }
+        // Allow all origins or specify your frontend URL
+        header('Access-Control-Allow-Origin: https://templeproject.netlify.app');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-        return null; // Let the request continue normally
+        // For OPTIONS request, just return a 200 response immediately
+        if ($request->getMethod() === 'options') {
+            header('HTTP/1.1 200 OK');
+            exit;
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        $response->setHeader('Access-Control-Allow-Origin', '*');
-        $response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        $response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-
-        return $response;
+        // You can also add headers here if needed
     }
 }
