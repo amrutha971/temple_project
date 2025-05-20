@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost/temple_backend/public/api/temples';
+const API_BASE = 'https://90fc-2403-a080-c04-5191-f99e-9c09-8b7d-9681.ngrok-free.app/api/temples';
 
 async function loadTemples() {
     try {
