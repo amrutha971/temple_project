@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 10px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+#temple-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 5px;
+}
+
+#temple-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#temple-list li:hover {
+    background-color: #ecf0f1;
+}
+
+#temple-list li:last-child {
+    border-bottom: none;
+}
+
+#poojas {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 0.1);
+}
+
+#poojas h2 {
+    margin-top: 0;
+    color: #2980b9;
+}
+
+#poojas ul {
+    padding-left: 20px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temples List</title>
+</head>
+<body>
+    <h1>Temples</h1>
+    <ul id="temple-list"></ul>
+
+    <script>
+      // Your ngrok API URL
+      const apiUrl = "https://ef32-2403-a080-c04-410f-f02e-accb-942f-3453.ngrok-free.app/api/temples";
+
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const list = document.getElementById('temple-list');
+          data.forEach(temple => {
+            const li = document.createElement('li');
+            li.textContent = `${temple.name} — ${temple.location}, ${temple.district}`;
+            list.appendChild(li);
+          });
+        })
+        .catch(error => {
+          console.error('Failed to load temples:', error);
+          document.body.insertAdjacentHTML('beforeend', '<p>Failed to load temples.</p>');
+        });
+    </script>
+</body>
+</html>
